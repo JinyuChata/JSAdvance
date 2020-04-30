@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script>
+		// 实例 实例对象
+		// 类型 类型对象
+		function Person(name, age) {
+			this.name = name
+			this.age = age
+        }
+
+        var p = new Person('tom', 12);
+
+		// undefined和null有什么区别
+        /**
+         * Undefined 定义未赋值
+         * null 定义已赋值 但是值为null
+         */
+        var a; console.log(a);
+        a = null; console.log(a);
+
+		// 什么时候给变量赋值给null
+        /**
+         * 定义了一个对象，将要将其赋值为对象
+         * 但是现在暂时没有创建出来对象
+         * - 初始赋值为null，表明将要作为一个对象使用
+         */
+        var b = null;   // 起始
+        b = ['atguigu', 12];    // 确定对象值
+        b = null;       // 标记为垃圾对象 对象将被GC回收
+        // b = 2           // 也会被回收，但是没有意义
+
+		// 严格区分变量类型和数据类型
+        /**
+         * - 数据类型
+         *   - 基本类型 -- 存基本数据类型
+         *   - 引用类型 -- 存对象的地址
+         * - 变量类型 变量内存取的值
+         *   - 基本类型
+         *   - 引用类型
+         */
+        // 引用类型
+        var c = {};
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

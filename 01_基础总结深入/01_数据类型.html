@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01_数据类型</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  /**
+   * 1. 分类
+   * - 基本（值）类型
+   *    - String    任意字符串
+   *    - Number    任意数字
+   *    - boolean   true/false
+   *    - undefined undefined
+   *    - null      null
+   * - 对象（引用）类型
+   *    - Object    任意对象都是Object 包括Array Function
+   *    - Function  一种特别的对象 可以执行
+   *    - Array     一种特别的对象 属性是数值下标属性 内部数据是有序的
+   * 2. 判断
+   * - typeof       返回数据类型的字符串表达
+   *    - 可以判断Undefined: typeof a === 'undefined'
+   *    - 可以判断数值
+   * - instanceof   判断对象的类型 / 具体类型
+   * - === 不会做数据转换 / == (尽量不要使用) 会做数据转换
+   *    - 可以判断Undefined: a === undefined
+   *
+   */
+
+  // 1. 基本
+  var a;
+  // typeof 返回数据类型的字符串表达
+  console.log(a, typeof a);
+  console.log(a === undefined, typeof a === 'undefined')
+  a = 1;
+  console.log(typeof a === 'number');
+
+  // typeof null === 'object'
+  // 若需要判断，需要使用全等 a === null
+  a = null;
+  console.log(typeof a, a === null);
+
+  // 2. 对象
+  var b1 = {
+    b2: [1, 'abc', console.log],
+    b3: function () {
+      console.log('b2');
+    }
+  }
+
+  console.log(b1 instanceof Object, b1 instanceof Array); // true false
+  console.log(b1.b2 instanceof Object, b1.b2 instanceof Array)  // true true
+  console.log(b1.b3 instanceof Object, b1.b3 instanceof Function) // true true
+
+</script>
+</body>
+</html>
