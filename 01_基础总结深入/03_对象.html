@@ -6,10 +6,36 @@
 	<script>
         /**
          * 1. 什么是对象
+         *  - 多个数据的封装体
+         *  - 用来保存多个数据的容器
+         *  - 一个对象代表现实中的一个事物？
          * 2. 为什么要用对象
+         *  - 统一管理多个数据
          * 3. 对象的组成
+         *  - 属性
+         *    - 属性名：本质上都是字符串 可以写成字符串 允许属性名不加引号
+         *      'name': 'name // or name: name
+         *    - 属性值：
+         *  - 方法 其实方法也是一种属性 -- 一种特别的属性
          * 4. 如何访问对象内部的数据
+         *  - .属性名 编码简单
+         *  - ['属性名'] 编码复杂
          */
+        var obj = {
+            name: 'Tom',
+	        age: 12,
+	        setName: function (name) {
+				this.name = name;
+            },
+	        setAge: function (age) {
+				this.age = age;
+            }
+        }
+
+        p.setName('Bob');
+        p['setAge'](12);
+
+        console.log(p.name, p['age']);
 	</script>
 </head>
 <body>
