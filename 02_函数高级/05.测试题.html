@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script>
+		/*
+		测试题1
+		 */
+		function A() {
+
+        }
+        A.prototype.n = 1;
+		var b = new A();
+		A.prototype = { n: 2, m: 3 };   //
+
+		var c = new A();
+		console.log(b.n, b.m, c.n, c.m);
+
+		/*
+		测试题2
+		 */
+		function F() {
+
+        }
+
+        Object.prototype.a = function () {
+			console.log('a()');
+        }
+
+        Function.prototype.b = function () {
+			console.log('b()');
+        }
+
+        var f = new F();
+		f.a();
+		// f中没有a
+		// f.__proto__即F.__proto__ 原来是一个{}(Object)
+		// f.__proto__ = {} 的__proto__是Object.proto
+		f.b();  // 找不到
+		F.a();  //
+		F.b();
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

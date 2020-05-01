@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script>
+		function Fn() {
+
+        }
+        Fn.prototype.a = 'xxx';
+		var fn1 = new Fn();
+		var fn2 = new Fn();
+		console.log(fn1.a);
+		console.log(fn2.a);
+
+		fn1.a = 'yyy';
+		console.log(fn1.a, fn2.a);
+		console.log(fn1);   // yyy
+		console.log(fn2);   // xxx 不会被改变
+		// 读取对象属性值时，自动到原型链上面查找
+		// 若是给对象设置属性值，当前对象若没有属性则直接添加
+
+		// 一般情况下不会在原型中添加属性 原型中一般只放方法
+		// 原型中的方法将在所有的对象中可见
+
+		// 一般的原型使用方法
+		function Person(name, age) {
+			this.name = name || '';
+			this.age = age || 0;
+        }
+
+        Person.prototype.setName = function(name) {
+		    this.name = name;
+		}
+
+		Person.prototype.setAge = function (age) {
+			this.age = age;
+        }
+
+        var p1 = new Person('David', 18);
+		var p2 = new Person();
+
+		console.log(p1);
+		console.log(p2);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

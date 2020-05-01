@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script>
+        /**
+         * 1. 执行代码
+         *  - 全局代码
+         *  - 函数(局部)代码
+         *
+         * 2. 全局执行上下文
+         *  - 在执行全局代码之前将window确定为全局执行上下文
+         *  - 对全局数据进行预处理
+         *    - var定义的全局变量 => undefined 添加为window的属性
+         *    - function声明的全局函数 => 赋值后添加为window的方法（直接可以用）
+         *    - this -> 赋值为window
+         *
+         * 3. 函数执行上下文
+         *  - 在调用函数，准备执行函数体之前，创建对应的函数执行上下文对象
+         *  - 对局部数据进行预处理：
+         *    - 形参变量 => 赋值为实参 => 添加为执行上下文的属性
+         *    - arguments => 赋值为是参列表 => 添加为执行上下文的属性
+         *    - var定义的局部变量 => Undefined => 添加为执行上下文的属性
+         *    - function声明的函数 => 赋值 添加为执行上下文的属性
+         *    - this => 赋值
+         *  - 开始执行函数体代码
+         */
+
+        console.log(a1, window.a1);
+        window.a2();
+        console.log(this);
+
+        var a1 = 3;
+
+        function a2() {
+            console.log('a2');
+        }
+
+        function fn() {
+            console.log(a1);
+            console.log(a2);
+            a3();
+            console.log(this);
+            console.log(arguments);
+
+            var a2 = 3;
+
+            function a3() {
+
+            }
+        }
+
+        /**
+         * 函数上下文对象并不是真实存在的
+         * - 将某一个函数的信息与局部变量放到栈中的一个封闭的区域
+         * - 与其他上下文对象也不会产生影响
+         * - 但是上下文对象是虚拟的
+         */
+
+        /**
+         * gb undefined
+         * fb 1
+         * fb 2
+         * fb 3
+         * fe 3
+         * fe 2
+         * fe 1
+         * ge 1
+         * @type {number}
+         */
+
+        var a = 10;
+        var bar = function () {
+            foo();
+        }
+
+        var foo = function () {
+            console.log('foo');
+        }
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

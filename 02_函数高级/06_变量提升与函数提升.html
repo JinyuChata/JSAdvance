@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script>
+        /**
+         * 1. 变量声明提升
+         *  - 通过var定义 声明 的变量，在定义语句之前就可以访问到
+         *  - 值：Undefined
+         * 2. 函数声明提升
+         *  - 通过function声明的函数，在此之前可以直接调用
+         *  - 值：函数的定义
+         * 3. 问题：变量与函数的提升是怎么产生的？
+         */
+        var a = 3;
+        function fn() {
+			console.log(a); // 此时已声明 但是没有赋值
+			var a = 4;
+        }
+        fn();
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
