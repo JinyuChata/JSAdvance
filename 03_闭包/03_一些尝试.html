@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<script>
+	var name = 'My Window';
+	var object = {
+	    name: 'My Object',
+		getNameFunc: function () {
+	        var _this = this;
+			return function () {
+			    // 闭包产生，而此时外界函数里并没有This, 真正执行的时候闭包内就不会将this对象保存
+				// 而外界函数中有_this, 所以_this可以访问到真正的
+				return this.name + ", _this: " + _this.name;
+            }
+        }
+	}
+
+	var object2 = {
+	    name: 'My Object2',
+		getNameFunc: function () {
+			return () => this.name;
+        }
+	}
+
+	console.log((object.getNameFunc())())
+	console.log((object2.getNameFunc())())
+</script>
+
+</body>
+</html>

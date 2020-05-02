@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script>
+        /**
+         * 1. 理解
+         *  - 多个上下级关系的作用域形成的链，它的方向是从下向上的 - 从内向外
+         *  - 查找变量时沿着作用域链查找
+         * 2. 查找一个变量的规则
+         *  - 当前作用于上下文查找对应的属性 没有进入2
+         *  - 上一级作用域查找对应属性 没有进入3
+         *  - 继续执行2的操作 直到全局作用域
+         */
+
+        // ----- 面试题1
+        var x = 10;
+
+        function fn() {
+            console.log(x);
+        }
+
+        function show(f) {
+            var x = 20;
+            f();
+        }
+
+        show(fn);   // 10
+
+        // 一定注意: 作用域在函数定义的时候就确定了
+
+        // ----- 面试题2
+		var obj = {
+		    fn2: function () {
+				console.log(fn2);   // 报错
+            }
+		}
+		obj.fn2();
+		/*
+		解释：
+			在函数定义好之后，作用域即确定
+			func fn2中需要输出fn2
+			- 本作用域中没有
+			- 外层作用域即为window 即没有所谓obj的作用域
+			如果想调用到fn2，需要使用this.fn2
+			* 这样也就解释了Vue中常用this.来调用data中的数据一样
+		 */
+	</script>
+</head>
+<body>
+
+</body>
+</html>

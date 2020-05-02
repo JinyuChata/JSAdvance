@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<script>
+    /**
+     * 1. 使用函数内部的变量(局部变量)在函数执行完后，依然存活在内存中 ---- 延长了局部变量的生存周期
+     * 2. 让函数外部可以操作(读写)到函数内部的数据 变量/函数
+     *
+     * 问题
+     * - 函数执行完后，函数内部声明的局部变量是否还存在？ 一般不存在，但是有闭包才可能存在(闭包里要)
+     * - 在函数外部能否直接访问函数内部的局部变量？      不能，但是通过闭包
+     */
+
+    function fn1() {
+        var a = 2;
+        function fn2() {
+            /**
+             * 只是向外部暴露了一个a++的函数
+             * 外部不能随意对a进行操作
+             * 不能直接看到1 不能对a进行除了++之外的操作
+             */
+			a++;
+			console.log(a);
+        }
+        function fn3() {
+			a--;
+			console.log(a);
+        }
+        return {fn2, fn3};
+    }
+
+    var fobj = fn1();
+    fobj.fn2();    // 3
+    fobj.fn2();    // 4
+    fobj.fn3();    // 3
+    fobj.fn3();    // 2
+	console.log(fobj);
+</script>
+</body>
+</html>
